@@ -1,5 +1,7 @@
 module.exports = {
     name: 'kick',
+    args: false,
+    usage: 'mention1[, mention2, ...] (parameters inside [] are optional) NOT IMPLEMENTED YET!',
     description: 'kick user out of channel/server (not implemented yet)',
     execute(message) {
         if (!message.mentions.users.size) {

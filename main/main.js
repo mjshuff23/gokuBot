@@ -19,21 +19,35 @@ gokuBot.login();
 // Event handler for incoming messages
 gokuBot.client.on('message', message => {
     if (!message.content.startsWith(prefix) || message.author.bot) {
+        console.log(`${message.author.username}: '${message.content}'`);
         return;
     }
+
     // Remove command from chat history (simulates bot acting on his own accord)
     client.commands.get('prune').execute(message, '1');
     // Separate command and arguments
     const args = message.content.slice(prefix.length).trim().split(/ +/);
-    const command = args.shift().toLowerCase(); // Considering remove the lowercase
+    const commandName = args.shift().toLowerCase(); // Considering remove the lowercase
 
-    if (!client.commands.has(command)) {
-        message.reply(`Gee, I don't think I know the command ${command}`);
+    if (!client.commands.has(commandName)) {
+        message.reply(`Gee, I don't think I know the command ${commandName}`);
         return;
     }
 
+    const command = client.commands.get(commandName);
+
+    if (command.args && !args.length) {
+        let reply = `I can't really do that without any arguments, ${message.author}! :sweat_smile:`;
+
+        if (command.usage) {
+            reply += `\nThe proper usage would be: \`${prefix}${command.name} ${command.usage}\``;
+        }
+
+        return message.channel.send(reply);
+    }
+
     try {
-        client.commands.get(command).execute(message, args, command);
+        command.execute(message, args, commandName);
     } catch (error) {
         console.error(error)
         message.reply(`There was an error trying to execute that command!`);

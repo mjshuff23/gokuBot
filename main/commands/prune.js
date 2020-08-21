@@ -1,5 +1,7 @@
 module.exports = {
     name: 'prune',
+    args: true,
+    usage: '1-99 <-- Number of lines to delete',
     description: 'Delete 1-99 lines from channel',
     execute(message, args) {
         const amount = parseInt(args[0]);
