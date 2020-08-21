@@ -10,7 +10,7 @@ class Bot {
         }
         this.client.once('ready', () => {
             // Message #home channel in my server upon login, will probably be deleted soon
-            this.client.channels.cache.get("733491269216763969").send("Hey guys!");
+            // this.client.channels.cache.get("733491269216763969").send("Hey guys!");
             console.log('Login Successful.');
         });
     }
