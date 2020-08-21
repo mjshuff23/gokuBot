@@ -1,0 +1,14 @@
+{
+  "name": "gokubot",
+  "version": "1.0.0",
+  "description": "Goku Bot for Discord. Using DiscordJS v12",
+  "main": "gokuBot.js",
+  "scripts": {
+    "test": "tst"
+  },
+  "author": "Michael Shuff",
+  "license": "ISC",
+  "dependencies": {
+    "chalk": "^4.1.0"
+  }
+}
