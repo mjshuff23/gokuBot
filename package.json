@@ -9,6 +9,9 @@
   "author": "Michael Shuff",
   "license": "ISC",
   "dependencies": {
-    "chalk": "^4.1.0"
+    "chai": "^4.2.0",
+    "chai-spies": "^1.0.0",
+    "chalk": "^4.1.0",
+    "discord.js": "^12.3.1"
   }
 }
