@@ -3,6 +3,7 @@ module.exports = {
     args: false,
     usage: 'mention1[, mention2, ...] (parameters inside [] are optional) NOT IMPLEMENTED YET!',
     description: 'kick user out of channel/server (not implemented yet)',
+    guildOnly: true,
     execute(message) {
         if (!message.mentions.users.size) {
             return message.reply(`You need to tag someone to kick them!`);

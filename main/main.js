@@ -23,8 +23,6 @@ gokuBot.client.on('message', message => {
         return;
     }
 
-    // Remove command from chat history (simulates bot acting on his own accord)
-    client.commands.get('prune').execute(message, '1');
     // Separate command and arguments
     const args = message.content.slice(prefix.length).trim().split(/ +/);
     const commandName = args.shift().toLowerCase(); // Considering remove the lowercase
@@ -35,6 +33,14 @@ gokuBot.client.on('message', message => {
     }
 
     const command = client.commands.get(commandName);
+
+    if (command.guildOnly && message.channel.type === 'dm') {
+        return message.reply(`I can't execute that command inside DMs!`);
+    }
+
+
+    // Remove command from chat history (simulates bot acting on his own accord)
+    client.commands.get('prune').execute(message, '1');
 
     if (command.args && !args.length) {
         let reply = `I can't really do that without any arguments, ${message.author}! :sweat_smile:`;
