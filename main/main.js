@@ -13,6 +13,8 @@ for (const file of commandFiles) {
     console.log(`Importing ${file}...`);
     client.commands.set(command.name, command);
 }
+// Initialize Cooldowns
+const cooldowns = new Discord.Collection();
 
 
 gokuBot.login();
@@ -50,6 +52,27 @@ gokuBot.client.on('message', message => {
         }
 
         return message.channel.send(reply);
+    }
+
+
+    if (!cooldowns.has(command.name)) {
+        cooldowns.set(command.name, new Discord.Collection())
+    }
+
+    const now = Date.now();
+    const timestamps = cooldowns.get(command.name);
+    const cooldownAmount = (command.cooldown || 3) * 1000;
+
+    if (timestamps.has(message.author.id)) {
+        const expirationTime = timestamps.get(message.author.id) + cooldownAmount;
+
+        if (now < expirationTime) {
+            const timeLeft = (expirationTime - now) / 1000;
+            return message.reply(`Please wait ${timeLeft.toFixed(1)} more second(s) before reusing the \'${command.name}\' command.`);
+        }
+    } else {
+        timestamps.set(message.author.id, now);
+        setTimeout(() => timestamps.delete(message.author.id), cooldownAmount);
     }
 
     try {

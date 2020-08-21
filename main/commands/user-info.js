@@ -4,6 +4,7 @@ module.exports = {
     args: false,
     usage: 'Does not take parameters',
     guildOnly: false,
+    cooldown: 5,
     execute(message) {
         message.channel.send(`Your username: ${message.author.username}\nYour ID: ${message.author.id}`);
     },

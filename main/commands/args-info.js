@@ -4,6 +4,7 @@ module.exports = {
     args: true,
     usage: 'arg1[, arg2, arg3, ...] (parameters inside [] are optional)',
     guildOnly: false,
+    cooldown: 5,
     execute(message, args, commandName) {
         message.channel.send(`Command name: ${commandName}\nArguments: ${args}\nArguments Length: ${args.length}`);
     },

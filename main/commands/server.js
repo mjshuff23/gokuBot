@@ -4,6 +4,7 @@ module.exports = {
     usage: 'Does not take parameters',
     description: 'Show current server and Member Count',
     guildOnly: true,
+    cooldown: 5,
     execute(message) {
         message.channel.send(`Server: ${message.guild.name}\n Members: ${message.guild.memberCount}`);
     },

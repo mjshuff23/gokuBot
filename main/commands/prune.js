@@ -4,6 +4,7 @@ module.exports = {
     usage: '1-99 <-- Number of lines to delete',
     description: 'Delete 1-99 lines from channel',
     guildOnly: true,
+    cooldown: 5,
     execute(message, args) {
         const amount = parseInt(args[0]);
 
