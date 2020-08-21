@@ -5,6 +5,7 @@ module.exports = {
     description: 'Delete 1-99 lines from channel',
     guildOnly: true,
     cooldown: 5,
+    aliases: ['delete', 'bulkdelete', 'pop'],
     execute(message, args) {
         const amount = parseInt(args[0]);
 

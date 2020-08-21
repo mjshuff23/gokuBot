@@ -5,6 +5,7 @@ module.exports = {
     description: 'Making sure Goku is alive',
     guildOnly: false,
     cooldown: 5,
+    aliases: ['test'],
     execute(message) {
         message.reply('Hi!');
     },

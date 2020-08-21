@@ -29,12 +29,13 @@ gokuBot.client.on('message', message => {
     const args = message.content.slice(prefix.length).trim().split(/ +/);
     const commandName = args.shift().toLowerCase(); // Considering remove the lowercase
 
-    if (!client.commands.has(commandName)) {
+    const command = client.commands.get(commandName)
+        || client.commands.find(cmd => cmd.aliases && cmd.aliases.includes(commandName));
+
+    if (!command) {
         message.reply(`Gee, I don't think I know the command ${commandName}`);
         return;
     }
-
-    const command = client.commands.get(commandName);
 
     if (command.guildOnly && message.channel.type === 'dm') {
         return message.reply(`I can't execute that command inside DMs!`);

@@ -5,6 +5,7 @@ module.exports = {
     description: 'kick user out of channel/server (not implemented yet)',
     guildOnly: true,
     cooldown: 5,
+    aliases: ['boot', 'destroy', 'exile'],
     execute(message) {
         if (!message.mentions.users.size) {
             return message.reply(`You need to tag someone to kick them!`);
