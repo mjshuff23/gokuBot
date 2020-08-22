@@ -23,7 +23,8 @@ gokuBot.login();
 // Event handler for incoming messages
 gokuBot.client.on('message', message => {
     if (!message.content.startsWith(prefix) || message.author.bot) {
-        console.log(`${message.author.username}: '${message.content}'`);
+        client.commands.get('colorchat').execute(message);
+        client.commands.get('emojicheck').execute(message);
         return;
     }
 
