@@ -9,9 +9,12 @@
   "author": "Michael Shuff",
   "license": "ISC",
   "dependencies": {
+    "@discordjs/opus": "^0.3.2",
     "chai": "^4.2.0",
     "chai-spies": "^1.0.0",
     "chalk": "^4.1.0",
-    "discord.js": "^12.3.1"
+    "discord.js": "^12.3.1",
+    "ytdl-core": "^3.2.2",
+    "ytdl-core-discord": "^1.2.1"
   }
 }

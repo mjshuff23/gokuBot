@@ -90,5 +90,8 @@ gokuBot.client.on('message', message => {
         console.error(error)
         message.reply(`There was an error trying to execute that command!`);
     }
-
 });
+
+module.exports = {
+     client,
+}
