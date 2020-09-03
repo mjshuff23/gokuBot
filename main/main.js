@@ -44,7 +44,6 @@ gokuBot.client.on('message', message => {
         return message.reply(`I can't execute that command inside DMs!`);
     }
 
-
     // Remove command from chat history (simulates bot acting on his own accord)
     client.commands.get('prune').execute(message, '1');
 
